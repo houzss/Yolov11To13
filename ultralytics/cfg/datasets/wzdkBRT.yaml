@@ -1,0 +1,20 @@
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: datasets/wzdkBRT
+train: images
+val: images
+
+# Classes
+names:
+  0: gate_unnormal
+  1: litter
+  2: screen_unnormal
+
+#names:
+#  0: gate_normal
+#  1: gate_unnormal
+#  2: litter
+#  3: litterbin_empty
+#  4: screen_normal
+#  5: screen_unnormal
+#  6: seat_normal
+

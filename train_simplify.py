@@ -4,15 +4,16 @@ import torch
 
 def train():
   # model = YOLO('yolov13n.yaml')
-  model = YOLO('yolov13n_zhs.pt')
-  # model = YOLO('yolov8n.pt')
+  # model = YOLO('yolov13n_zhs.pt')
+  model = YOLO('yolov8n.pt')
 
   # 需要重置全连接层，输出维度靠齐
 
   # Train the model
   results = model.train(
     # data='coco128.yaml',
-    data='wzdkBRT.yaml',
+    # data='wzdkBRT.yaml',
+    data='helmet.yaml',
     epochs=300,
     batch=16,
     imgsz=640,

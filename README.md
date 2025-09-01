@@ -72,8 +72,15 @@ __get_pydantic_core_schema__ on your type to fully support it.
 更新 gradio版本
 pip install --upgrade gradio==4.44.1
 
+4. onnx执行报错找不到onnx库
 
-## yolov11To13 代码包， yolov11-v13集成，整合了视频切分、⾃定义模型推理
+pip install  `onnxruntime==1.22.1 onnxruntime-gpu==1.22.0` （如果安装onnxruntime-gpu失败，带上—user）
+
+5. 训练完报错没装画图工具库
+
+pip3 install scipy
+
+## yolov3To13 代码包， yolov3-v13集成，整合了视频切分、⾃定义模型推理、自定义onnx格式模型推理
 a. 图⽚预测
 <img width="1814" height="939" alt="image" src="https://github.com/user-attachments/assets/cf94c065-88ba-405f-ac88-d2b8c5fe68ba" />
 
@@ -91,6 +98,12 @@ https://github.com/iMoonLab/yolov13/releases/tag/yolov13，本地代码我已
 c. voc2yolo.py 将voc格式的标注数据转为yolo格式的，用法：python voc2yolo.py --voc-root [输入的voc格式文件夹目录] --yolo-root [输出的yolo格式文件夹目录]
 
 d. pt2onnx.py 将pt模型文件转为onnx格式文件，用法： python pt2onnx.py --model [参数文件相对/绝对路径]
+
+e. yolo_detector_anno.py使用yolo模型对图片进行预测并输出voc标签文件，支持自己训练好的模型。
+
+f. voc2yolo_2.py 用于将标签文件从voc格式转为yolo格式（第二个版本增加了将标签a转为标签b的过程）
+
+g. pkl_util.py 用于保存和读取字典数据。
 
 ## 数据集标注⼯具LabelImg下载及使⽤（打开Anaconda Prompt，选择⼀个
 python=3.9的环境下）
