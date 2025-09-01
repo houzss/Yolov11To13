@@ -1,5 +1,5 @@
-# Yolov11To13
-基于Ultralytics框架的Yolo目标检测（可集成v1~v13所有版本）
+# Yolov3To13
+基于Ultralytics框架的Yolo目标检测（可集成v3~v13所有版本）
 ## 目标环境搭建
 1. 安装cuda C:\Users\houzs\AppData\Local\Temp\cuda
    
@@ -80,9 +80,10 @@ pip install  `onnxruntime==1.22.1 onnxruntime-gpu==1.22.0` （如果安装onnxru
 
 pip3 install scipy
 
-## yolov3To13 代码包， yolov3-v13集成，整合了视频切分、⾃定义模型推理、自定义onnx格式模型推理
+## yolov3To13 代码包， yolov3-v13集成，整合了视频切分、自定义模型推理、自定义onnx格式模型推理
 a. 图⽚预测
-<img width="1814" height="939" alt="image" src="https://github.com/user-attachments/assets/cf94c065-88ba-405f-ac88-d2b8c5fe68ba" />
+<img width="1794" height="875" alt="image" src="https://github.com/user-attachments/assets/a548598d-b33f-478a-b33d-ab4f7c4e8a88" />
+
 
 b. 视频转图⽚集及预测
 <img width="1386" height="910" alt="image" src="https://github.com/user-attachments/assets/b96f314d-7937-41d8-a8ab-3b5a8d16220f" />
