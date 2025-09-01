@@ -1,5 +1,5 @@
-# Yolov3To13
-基于Ultralytics框架的Yolo目标检测（可集成v3~v13所有版本）
+# Yolo_Ultralytics_v1To13
+基于Ultralytics框架的Yolo目标检测（可集成v1~v13所有版本）
 ## 目标环境搭建
 1. 安装cuda C:\Users\houzs\AppData\Local\Temp\cuda
    
