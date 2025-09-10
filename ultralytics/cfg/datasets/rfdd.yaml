@@ -1,0 +1,13 @@
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: datasets/rfdd
+train: images
+val: images
+
+# Classes
+names:
+  0: fishing
+  1: floating_debris
+  2: oil_pollution
+  3: riverbank_garbage
+
+

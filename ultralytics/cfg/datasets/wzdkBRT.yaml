@@ -5,9 +5,10 @@ val: images
 
 # Classes
 names:
-  0: gate_unnormal
-  1: litter
-  2: screen_unnormal
+  0: gate_normal
+  1: gate_unnormal
+  2: litter
+  3: screen_unnormal
 
 #names:
 #  0: gate_normal

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-voc2yolo.py
-把 PascalVOC XML 标注批量转换为 YOLO txt 格式。
+voc2yolo_2.py
+把 PascalVOC XML 标注批量转换为 YOLO txt 格式。（并统一将a类别改为b）
+#!/usr/bin/env python3
 
 Usage:
     python voc2yolo.py \
@@ -27,6 +28,13 @@ def parse_xml(xml_path):
     boxes = []
     for obj in root.findall('object'):
         name = obj.findtext('name').strip()
+        
+        # 将 'hat' 类别名称改为 'helmet'
+        # if name == 'hat':
+        #     name = 'helmet'
+        # if name == 'person':
+        #     name = 'head'
+            
         bndbox = obj.find('bndbox')
         xmin = float(bndbox.findtext('xmin'))
         ymin = float(bndbox.findtext('ymin'))
@@ -50,6 +58,11 @@ def build_class_map(voc_root, include_classes):
         try:
             boxes = parse_xml(xml_file)
             for name, *_ in boxes:
+                # 处理类别名称映射
+                # if name == 'hat':
+                #     name = 'helmet'
+                # if name == 'person':
+                #     name = 'head'
                 if flag and name in include_classes:
                     class_set.add(name)
         except Exception as e:
@@ -64,8 +77,8 @@ def convert(voc_root, yolo_root):
     yolo_root = Path(yolo_root)
     yolo_root.mkdir(parents=True, exist_ok=True)
 
-    #只训练指定类别
-    include_classes = ['gate_normal','gate_unnormal','litter','screen_unnormal']
+    # 只训练指定类别
+    include_classes = ['floating_debris','oil_pollution','fishing','riverbank_garbage']
     class_map = build_class_map(voc_root, include_classes)
     if not class_map:
         print('未检测到任何 XML 或目标，终止。')
@@ -96,11 +109,16 @@ def convert(voc_root, yolo_root):
         write_flag = False
         with open(txt_path, 'w', encoding='utf-8') as f:
             for name, xc, yc, w, h in boxes:
+                # 确保类别名称映射正确
+                if name == 'hat':
+                    name = 'helmet'
                 if name not in class_map:
                     print(f'[WARN] 类别 {name} 不在类别表中，跳过')
+
                     continue
                 cls_id = class_map[name]
                 f.write(f'{cls_id} {xc:.6f} {yc:.6f} {w:.6f} {h:.6f}\n')
+                write_flag = True
         if (not write_flag) and os.path.exists(txt_path):# 未写入内容直接删除文件
             print(f'{txt_path}未写入内容')
             os.remove(txt_path)

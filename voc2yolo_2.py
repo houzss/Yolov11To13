@@ -106,7 +106,7 @@ def convert(voc_root, yolo_root):
         rel_path = xml_file.relative_to(voc_root).with_suffix('.txt')
         txt_path = yolo_root / rel_path
         txt_path.parent.mkdir(parents=True, exist_ok=True)
-
+        write_flag = False
         with open(txt_path, 'w', encoding='utf-8') as f:
             for name, xc, yc, w, h in boxes:
                 # 确保类别名称映射正确
@@ -117,6 +117,9 @@ def convert(voc_root, yolo_root):
                     continue
                 cls_id = class_map[name]
                 f.write(f'{cls_id} {xc:.6f} {yc:.6f} {w:.6f} {h:.6f}\n')
+        if (not write_flag) and os.path.exists(txt_path):# 未写入内容直接删除文件
+            print(f'{txt_path}未写入内容')
+            os.remove(txt_path)
     print('转换完成！')
 
 
